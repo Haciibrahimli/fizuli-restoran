@@ -9,6 +9,7 @@ def home_view(request):
         "index_about": about,
         "index_workers": workers,
     }
+
     return render(request, "index.html", context)
 
 
