@@ -1,6 +1,7 @@
-{% extends 'base.html '%}
+{% extends 'base.html' %}
 {% load static %}
-{% block body%}
+
+{% block body %}
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
@@ -50,7 +51,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form metod="POST">
+                            <form method="POST">
                                 {% csrf_token %}
                                 <div class="row g-3">
                                     <div class="col-md-6">
@@ -67,13 +68,13 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            {{ form.subject }}
+                                        {{ form.subject }}
                                             <label for="subject">Subject</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            {{ form.message }}
+                                        {{form.message}}
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
@@ -89,4 +90,5 @@
         </div>
         <!-- Contact End -->
 
-{% endblock body %}
+
+     {% endblock body %}
