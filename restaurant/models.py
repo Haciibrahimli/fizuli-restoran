@@ -7,6 +7,7 @@ from services.choices import SOCIAL_CHOICES
 from services.extract import extract_yt_video_url_from_iframe
 
 class AboutModel(DateMixin, SlugMixin):
+
     head = models.CharField(max_length=255, verbose_name="Haqqımızda başlıq hissəsi")
     description = RichTextField(verbose_name="Açıqlama")
     years_of_experience = models.CharField(max_length=255, verbose_name="Təcrübə")
@@ -38,7 +39,9 @@ class AboutModel(DateMixin, SlugMixin):
             myobj.img_3 = self.img_3
             myobj.img_4 = self.img_4
             myobj.save()
+
         else:
+
             if not self.slug:
                 self.slug = Generator.create_slug_shortcode(size=15, model_=AboutModel)
             super(AboutModel, self).save(*args, **kwargs)
@@ -77,6 +80,7 @@ class Service(DateMixin, SlugMixin):
         verbose_name_plural = "Xidmətlər"
 
     def save(self, *args, **kwargs):
+        
         if not self.slug:
             self.slug = Generator.create_slug_shortcode(size=15, model_=Service)
         super(Service, self).save(*args, **kwargs)
