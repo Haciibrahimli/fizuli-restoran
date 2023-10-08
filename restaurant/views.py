@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
+
 from restaurant.models import AboutModel, Personal, Service, Menu, Contact, HomeHeader, Category
 from restaurant.forms import ContactForm, ReserveForm
 from django.contrib import messages
 import json
+
 
 def home_view(request):
     about = AboutModel.objects.first()
@@ -75,14 +77,12 @@ def booking_view(request):
             messages.success(request,"Məlumatlar göndərildi")
             form = ReserveForm()
         else:
-
             messages.error(request, "Telefon yalnisdir")
 
     context = {
         "form": form,
     }
     return render(request, "booking.html", context)
-
 
 def our_team(request):
     context = {}
