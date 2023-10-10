@@ -6,7 +6,9 @@ from services.uploader import Uploader
 from services.choices import SOCIAL_CHOICES
 from services.extract import extract_yt_video_url_from_iframe
 
+
 class AboutModel(DateMixin, SlugMixin):
+
 
     head = models.CharField(max_length=255, verbose_name="Haqqımızda başlıq hissəsi")
     description = RichTextField(verbose_name="Açıqlama")
@@ -29,7 +31,9 @@ class AboutModel(DateMixin, SlugMixin):
         verbose_name = "Haqqımızda"
         verbose_name_plural = "Haqqımızda"
 
+
     def save(self, *args, **kwargs):
+        
         if not self.id and AboutModel.objects.exists():
             myobj = AboutModel.objects.first()
             myobj.head = self.head

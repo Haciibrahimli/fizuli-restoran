@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
-
 from restaurant.models import AboutModel, Personal, Service, Menu, Contact, HomeHeader, Category
 from restaurant.forms import ContactForm, ReserveForm
 from django.contrib import messages
 import json
-
 
 def home_view(request):
     about = AboutModel.objects.first()
@@ -19,7 +17,6 @@ def home_view(request):
         menu_1 = Menu.objects.filter(category__id=cat)
         print(menu_1)
     
-
     context = {
         "index_about": about,
         "index_workers": workers,
@@ -28,7 +25,6 @@ def home_view(request):
         "menu_1": menu_1,
     }
     return render(request, "index.html", context)
-
 
 def about_view(request):
     context = {}
@@ -42,7 +38,6 @@ def service_view(request):
     }
     return render(request, "service.html", context)
 
-
 def menu_view(request):
     foods = Menu.objects.order_by("-created_at").filter(category__name='Popular Breakfast')
     context = {
@@ -53,6 +48,7 @@ def menu_view(request):
 
 def contact_view(request):
     form = ContactForm()
+
     if request.method == "POST":
         form = ContactForm(request.POST or None)
         if form.is_valid():
@@ -66,7 +62,6 @@ def contact_view(request):
         "form": form,
     }
     return render(request, "contact.html", context)
-
 
 def booking_view(request):
     form = ReserveForm()
